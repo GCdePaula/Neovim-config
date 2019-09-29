@@ -63,7 +63,7 @@ syntax enable
 let mapleader=","
 xnoremap <silent> <leader>p p:let @+=@0<CR>
 nnoremap <leader>dd "_dd
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nnoremap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 "nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 "" Y yanks from the cursor to the end of line
@@ -127,7 +127,7 @@ runtime macros/matchit.vim
 set title
 
 "" Line number style
-set number " relativenumber
+set number "relativenumber
 
 "" Show command line in bottom bar
 set showcmd
@@ -213,34 +213,51 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Plug 'tpope/vim-sensible'
 
-"" Scrolling feedback
-" Plug 'joeytwiddle/sexy_scroller.vim'
-
 "" UI
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 
 "" Colorschemes
 Plug 'morhetz/gruvbox'
-
-"" Languages specific plugins
-Plug 'tomlion/vim-solidity' " , { 'for': 'solidity' }
-Plug 'pangloss/vim-javascript' " , {'for': 'javascript'}
-Plug 'maxmellon/vim-jsx-pretty' " , {'for': 'javascript'}
-Plug 'figitaki/vim-dune'
-Plug 'let-def/ocp-indent-vim'
-Plug 'tbastos/vim-lua'
+Plug 'ayu-theme/ayu-vim'
 
 "" Auto complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'copy/deoplete-ocaml'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"" Languages specific plugins
+" Solidity
+Plug 'tomlion/vim-solidity' " , { 'for': 'solidity' }
+
+" javascript
+Plug 'pangloss/vim-javascript' " , {'for': 'javascript'}
+Plug 'mxw/vim-jsx'
+
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" OCaml
+Plug 'figitaki/vim-dune'
+Plug 'let-def/ocp-indent-vim'
+"Plug 'copy/deoplete-ocaml'
+
+" Lua
+Plug 'tbastos/vim-lua'
+
+" Golanag
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 
 "" Linter
 Plug 'w0rp/ale'
 
+
 "" Other
 " Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
+
 call plug#end()
 """"""""""""""""""""
 
@@ -249,35 +266,80 @@ call plug#end()
 " Plug-in configuration
 """"""""""
 
+"" ale and deoplete
+" Ignore ocamllex and ocamlyacc
+let g:ale_pattern_options = {
+\   '.*\.mll$': {'ale_enabled': 0},
+\   '.*\.mly$': {'ale_enabled': 0},
+\}
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint', 'tsserver'],
+\   'solidity': ['solc', 'solhint'],
+\   'go': ['gopls', 'golangci-lint'],
+\   'ocaml' : ['merlin', 'ols'],
+\}
+
+let g:ale_solidity_solc_options = '--allow-paths .'
+let g:ale_go_golangci_lint_options = ''
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
+
+let g:ale_completion_enabled = 0
+"let g:ale_lint_on_text_changed = 0
+"let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+
+let g:ale_completion_tsserver_autoimport = 1
+
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', {
+\ '_': ['ale', 'buffer'],
+\})
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources.ocaml = ['buffer', 'around', 'member', 'tag']
+
+
+"" lightline
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ }
+\   'colorscheme': 'gruvbox',
+\   'active': {
+\       'left': [ [ 'mode', 'paste' ],
+\               [ 'readonly', 'filename', 'modified', 'helloworld' ],
+\               [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']]
+\   },
+\}
+
+let g:lightline.component_expand = {
+\   'linter_checking': 'lightline#ale#checking',
+\   'linter_warnings': 'lightline#ale#warnings',
+\   'linter_errors': 'lightline#ale#errors',
+\   'linter_ok': 'lightline#ale#ok',
+\ }
+
+let g:lightline.component_type = {
+\   'linter_checking': 'left',
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error',
+\   'linter_ok': 'left',
+\}
+
 
 "" Set colorscheme
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="medium" " hard, medium or soft
 colorscheme gruvbox " https://github.com/morhetz/gruvbox
-" let ayucolor="mirage" " light, mirage or dark
-" colorscheme ayu " https://github.com/ayu-theme/ayu-vim
+" let ayucolor="light" " light, mirage or dark
+"colorscheme ayu " https://github.com/ayu-theme/ayu-vim
 
-"" Deoplete stuff
-if !exists('g:deoplete#omni_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.ocaml = '[^. *\t]\.\w*|\s\w*|#'
 
-" enable deoplete
-let g:deoplete#enable_at_startup = 1
-
-" this is the default, make sure it is not set to "omnifunc" somewhere else in your vimrc
-let g:deoplete#complete_method = "complete"
-
-" other completion sources suggested to disable
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources.ocaml = ['buffer', 'around', 'member', 'tag']
-
-" no delay before completion
-let g:deoplete#auto_complete_delay = 0
+"" vim-commentary
+autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)
 
 
 "" NERDTree configs
@@ -292,11 +354,10 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"" Ignore ocamllex and ocamlyacc
-let g:ale_pattern_options = {
-\   '.*\.mll$': {'ale_enabled': 0},
-\   '.*\.mly$': {'ale_enabled': 0},
-\}
+
+
+
+"" OCaml auto user setup
 
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
