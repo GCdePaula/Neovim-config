@@ -1,32 +1,19 @@
 
-
-
-""""""""""""""""""""
-" Vim-plug
-""""""""""
-call plug#begin('~/.local/share/nvim/plugged')
-
-" Other
-" Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-commentary'
-
-call plug#end()
-""""""""""""""""""""
+"" General settings, mostly from vim-sensible
 source ~/.config/nvim/general.vim
-source ~/.config/nvim/keymappings.vim
+
+
+"" Plugins settings
+" Load all plugins
+source ~/.config/nvim/plugs.vim
+
+" Language specific settings. Syntax highlight, linting, autocomplete.
 source ~/.config/nvim/langs.vim
+
+" NERDTree, lightline, colorschemes.
 source ~/.config/nvim/uiconfig.vim
+
+
+"" opam settings for OCaml use.
 source ~/.config/nvim/opam.vim
-
-""""""""""""""""""""
-" Plug-in configuration
-""""""""""
-
-"" vim-commentary
-autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)
-
-
-
-
-
 

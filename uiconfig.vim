@@ -1,30 +1,13 @@
 
 set termguicolors "set t_Co=256 turm=xterm-256color
 
-""""""""""""""""""""
-" Vim-plug
-""""""""""
-call plug#begin('~/.local/share/nvim/plugged')
-
-"" Colorschemes
-Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
-Plug 'junegunn/seoul256.vim'
-
-"" UI
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-
-call plug#end()
-""""""""""""""""""""
 
 "" Set colorscheme
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="medium" " hard, medium or soft
-colorscheme gruvbox " https://github.com/morhetz/gruvbox
-" let ayucolor="light" " light, mirage or dark
-"colorscheme ayu " https://github.com/ayu-theme/ayu-vim
+let g:gruvbox_contrast_light="hard" " hard, medium or soft
+set background=dark
+colorscheme gruvbox
 
 
 "" NERDTree configs
@@ -38,6 +21,10 @@ let g:NERDTreeWinPos = "right"
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Disable gutter on nerdtree
+autocmd FileType nerdtree setlocal signcolumn=no
+
 
 "" lightline
 let g:lightline = {
@@ -62,4 +49,5 @@ let g:lightline.component_type = {
 \   'linter_errors': 'error',
 \   'linter_ok': 'left',
 \}
+
 

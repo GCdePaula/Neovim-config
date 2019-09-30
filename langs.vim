@@ -1,37 +1,9 @@
 
-""""""""""""""""""""
-" Vim-plug
-""""""""""
-call plug#begin('~/.local/share/nvim/plugged')
+syntax enable
 
-"" Auto complete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"" Allways show gutter
+set signcolumn=yes
 
-"" Linter
-Plug 'w0rp/ale'
-
-" Solidity
-Plug 'tomlion/vim-solidity' " , { 'for': 'solidity' }
-
-" javascript
-Plug 'pangloss/vim-javascript' " , {'for': 'javascript'}
-Plug 'mxw/vim-jsx'
-
-" typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
-" OCaml
-Plug 'let-def/ocp-indent-vim'
-
-" Lua
-Plug 'tbastos/vim-lua'
-
-" Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-call plug#end()
-""""""""""""""""""""
 
 "" ale and deoplete
 " Ignore ocamllex and ocamlyacc
