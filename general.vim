@@ -50,8 +50,8 @@ endif
 filetype indent plugin on
 
 "" Tab as four spaces
-set tabstop=2 shiftwidth=2 softtabstop=0 expandtab
-set smartindent autoindent smarttab
+set tabstop=2 shiftwidth=2 softtabstop=1 expandtab
+set smartindent autoindent "smarttab
 
 "" Lines longer than window will wrap, breaking at a word,
 "" and will continue indentation, plus a return symbol.
@@ -158,6 +158,10 @@ nnoremap <C-H> <C-W><C-H>
 """"""""""""""""""""
 " Useful indent functions
 """"""""""
+function! SetIndent8()
+  :set tabstop=8 shiftwidth=8
+endfunction
+
 function! SetIndent4()
   :set tabstop=4 shiftwidth=4
 endfunction
@@ -166,19 +170,21 @@ function! SetIndent2()
   :set tabstop=2 shiftwidth=2
 endfunction
 
-map <leader>2 :call SetIndent2()<CR>
+map <leader>8 :call SetIndent8()<CR>
 map <leader>4 :call SetIndent4()<CR>
+map <leader>2 :call SetIndent2()<CR>
 
 function! UseTabs()
   set noexpandtab   " Always uses tabs instead of space characters (noet).
   set autoindent    " Copy indent from current line when starting a new line (ai).
+  set softtabstop=0 " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
 endfunction
 
 function! UseSpaces()
   set expandtab     " Always uses spaces instead of tab characters (et).
-  set softtabstop=0 " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
+  set softtabstop=1 " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
   set autoindent    " Copy indent from current line when starting a new line.
-  set smarttab      " Inserts blanks on a <Tab> key (as per sw, ts and sts).
+"  set smarttab      " Inserts blanks on a <Tab> key (as per sw, ts and sts).
 endfunction
 """"""""""""""""""""
 

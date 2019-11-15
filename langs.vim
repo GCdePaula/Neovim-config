@@ -17,7 +17,7 @@ let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'solidity': ['solc', 'solhint'],
 \   'go': ['gopls', 'golangci-lint'],
-\   'ocaml' : ['merlin', 'ols'],
+\   'ocaml' : ['merlin', 'ols', 'ocp-indent'],
 \}
 
 let g:ale_solidity_solc_options = '--allow-paths .'
@@ -43,7 +43,13 @@ call deoplete#custom#option('sources', {
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources.ocaml = ['buffer', 'around', 'member', 'tag']
 
+call deoplete#custom#source('_', 'max_menu_width', 0)
+call deoplete#custom#source('_', 'max_info_width', 0)
 
 "" vim-commentary OCaml
 autocmd FileType ocaml setlocal commentstring=(*\ %s\ *)
+
+"" Disable autoindent for Menhir/ocamlyacc and ocamllex
+autocmd BufRead,BufNewFile *.mly setlocal indentexpr=
+autocmd BufRead,BufNewFile *.mll setlocal indentexpr=
 

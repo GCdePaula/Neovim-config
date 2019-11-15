@@ -37,7 +37,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 " OCaml
-Plug 'let-def/ocp-indent-vim'
+"Plug 'let-def/ocp-indent-vim'
 
 " Lua
 Plug 'tbastos/vim-lua'
