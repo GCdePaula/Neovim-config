@@ -15,5 +15,5 @@ source ~/.config/nvim/uiconfig.vim
 
 
 "" opam settings for OCaml use.
-source ~/.config/nvim/opam.vim
+"source ~/.config/nvim/opam.vim
 

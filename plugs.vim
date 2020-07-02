@@ -45,6 +45,8 @@ Plug 'tbastos/vim-lua'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" Rust
+Plug 'rust-lang/rust.vim'
 
 "" Comments
 Plug 'tpope/vim-commentary'

@@ -1,4 +1,3 @@
-
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
@@ -31,9 +30,9 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
-" ## added by OPAM user-setup for vim / ocp-indent ## 5af981ada07fa7277c648f8c4b372f0f ## you can edit, but keep this line
+" ## added by OPAM user-setup for vim / ocp-indent ## 57735471544cad85e68a177ae9f46f56 ## you can edit, but keep this line
 if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/Users/gabrielcpaula/Documents/Mestrado/Compiladores_grad.nosync/monga_compiler/_opam/share/ocp-indent/vim/indent/ocaml.vim"
+  source "/Users/gabrielcpaula/.opam/4.08.1/share/ocp-indent/vim/indent/ocaml.vim"
 endif
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
 
