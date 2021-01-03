@@ -48,6 +48,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Rust
 Plug 'rust-lang/rust.vim'
 
+" TeX
+Plug 'lervag/vimtex'
+
 "" Comments
 Plug 'tpope/vim-commentary'
 

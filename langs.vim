@@ -64,3 +64,4 @@ autocmd BufRead,BufNewFile *.mll setlocal indentexpr=
 
 "" Support for solidity filetype.
 autocmd BufNewFile,BufRead *.sol setfiletype solidity
+
