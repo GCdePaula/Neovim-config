@@ -21,20 +21,21 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 
 "" Linter
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 
 "" Language specific plugins
 " Solidity
-Plug 'tomlion/vim-solidity' " , { 'for': 'solidity' }
+" Plug 'tomlion/vim-solidity' " , { 'for': 'solidity' }
+Plug 'TovarishFin/vim-solidity' " , { 'for': 'solidity' }
 
 " javascript
 Plug 'pangloss/vim-javascript' " , {'for': 'javascript'}
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 
 " typescript
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'peitalin/vim-jsx-typescript'
 
 " OCaml
 "Plug 'let-def/ocp-indent-vim'
@@ -43,13 +44,20 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'tbastos/vim-lua'
 
 " Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Coq
+Plug 'whonore/Coqtail'
 
 " Rust
 Plug 'rust-lang/rust.vim'
 
 " TeX
 Plug 'lervag/vimtex'
+
+" TOML
+Plug 'cespare/vim-toml'
+
 
 "" Comments
 Plug 'tpope/vim-commentary'
