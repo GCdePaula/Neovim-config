@@ -19,7 +19,7 @@ let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'solidity': ['solc', 'solhint'],
 \   'go': ['gopls', 'golangci-lint'],
-\   'ocaml' : ['merlin', 'ols', 'ocp-indent'],
+\   'ocaml' : ['ocamllsp'],
 \   'lua' : ['luac', 'luacheck'],
 \   'rust' : ['rls'],
 \}
@@ -31,6 +31,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
 \   'rust' : ['rustfmt'],
+\   'ocaml' : ['ocamlformat'],
 \}
 
 let g:rustfmt_autosave = 1
