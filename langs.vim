@@ -24,7 +24,7 @@ let g:ale_linters = {
 \   'rust' : ['rls'],
 \}
 
-let g:ale_solidity_solc_options = '--allow-paths .'
+let g:ale_solidity_solc_options = '--allow-paths . ../'
 let g:ale_go_golangci_lint_options = ''
 
 let g:ale_fixers = {
