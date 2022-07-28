@@ -1,0 +1,3 @@
+[submodule "tree-sitter-parsers/tree-sitter-solidity"]
+	path = tree-sitter-parsers/tree-sitter-solidity
+	url = https://github.com/JoranHonig/tree-sitter-solidity
