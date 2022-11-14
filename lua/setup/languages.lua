@@ -14,4 +14,6 @@ end
 -- languages
 require 'setup.languages.rust'
 require 'setup.languages.lua'
-require 'setup.languages.solidity'
+-- require 'setup.languages.solidity'
+require 'setup.languages.tex'
+

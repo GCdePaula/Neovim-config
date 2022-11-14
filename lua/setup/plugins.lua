@@ -15,7 +15,20 @@ return require('packer').startup(function(use)
 
 
   --- UI
-  use { 'scrooloose/nerdtree', cmd = 'NERDTreeToggle' }
+  -- use { 'scrooloose/nerdtree', cmd = 'NERDTreeToggle' }
+
+  -- use {
+  --   "luukvbaal/nnn.nvim",
+  --   config = function() require("nnn").setup() end
+  -- }
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+  }
+
   use 'nvim-lualine/lualine.nvim'
 
 

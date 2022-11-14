@@ -24,23 +24,28 @@ function! ColorGruvbox()
   colorscheme gruvbox
 endfunction
 
-
-"" NERDTree configs
-function! ToggleNT()
-    :NERDTreeToggle
-    :NERDTreeMirror
-endfunction
-map <silent> <C-n> :call ToggleNT()<CR>
-
-let g:netrw_dirhistmax = 0
-let g:NERDTreeWinPos = "right"
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Disable gutter on nerdtree
-autocmd FileType nerdtree setlocal signcolumn=no
-
-
 "" Set colorscheme
 call ColorGruvbox()
+
+"" nvim-tree configs
+map <silent> <C-n> :NvimTreeToggle<CR>
+autocmd FileType NvimTree setlocal signcolumn=no
+
+"" nnn configs
+" tnoremap <C-n> <cmd>NnnExplorer<CR>
+
+"" NERDTree configs
+" function! ToggleNT()
+"     :NERDTreeToggle
+"     :NERDTreeMirror
+" endfunction
+" map <silent> <C-n> :call ToggleNT()<CR>
+
+"let g:netrw_dirhistmax = 0
+"let g:NERDTreeWinPos = "right"
+"let NERDTreeMouseMode=2
+"let NERDTreeShowHidden=1
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Disable gutter on nerdtree
+"autocmd FileType nerdtree setlocal signcolumn=no

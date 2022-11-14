@@ -1,4 +1,5 @@
 local vim_api = vim.api
+
 --- Setup nvim-cmp.
 vim.o.completeopt = "menu,menuone,noselect"
 
@@ -58,7 +59,7 @@ cmp.setup {
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = "nvim_lsp_signature_help" },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp_document_symbol' },
     { name = 'dictionary' },
     { name = 'vsnip' },
@@ -70,28 +71,28 @@ cmp.setup {
 
 -- autocmd FileType latex,tex,md,markdown setlocal spell
 -- Set configuration for specific filetype.
--- cmp.setup.filetype('gitcommit', {
---   sources = cmp.config.sources({
---       { name = 'cmp_git' },
---     }, {
---       { name = 'buffer' },
---     })
--- })
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+      { name = 'cmp_git' },
+    }, {
+      { name = 'buffer' },
+    })
+})
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline('/', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---       { name = 'path' }
---     }, {
---       { name = 'cmdline' }
---     })
--- })
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+})

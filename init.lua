@@ -3,10 +3,13 @@ vim.cmd([[
 source ~/.config/nvim/general.vim
 ]])
 
--- NERDTree, lualine, colorschemes.
+-- file explorer mapping, lualine, colorschemes.
 vim.cmd([[
 source ~/.config/nvim/uiconfig.vim
 ]])
+
+-- File explorer
+require "setup.file_explorer"
 
 -- lualine
 require "setup.lualine"
@@ -28,9 +31,9 @@ require "setup.languages"
 
 -- Latex config, stolen from
 -- `https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536`
-vim.cmd([[
-source ~/.config/nvim/latex.vim
-]])
+-- vim.cmd([[
+-- source ~/.config/nvim/latex.vim
+-- ]])
 
 --[[
 nnn

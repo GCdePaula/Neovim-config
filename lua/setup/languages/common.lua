@@ -5,7 +5,7 @@ local vim_inspect = vim.inspect
 
 -- Autocomplete capabilities
 local cmp_lsp = require('cmp_nvim_lsp')
-local capabilities = cmp_lsp.update_capabilities(
+local capabilities = cmp_lsp.default_capabilities(
   vim_lsp.protocol.make_client_capabilities()
 )
 
