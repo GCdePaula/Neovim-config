@@ -3,7 +3,17 @@ local configs = require "nvim-treesitter.configs"
 
 configs.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "lua", "rust", "solidity" },
+  ensure_installed = {
+    "go",
+    "gomod",
+    "gosum",
+    "gowork",
+    "lua",
+    "ocaml",
+    "ocaml_interface",
+    "rust",
+    "solidity_correct",
+  },
 
   highlight = {
     enable = true,

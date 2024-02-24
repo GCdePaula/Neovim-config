@@ -4,7 +4,7 @@ local vim_api = vim.api
 
 -- Remappings
 do
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
   vim_api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   vim_api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   vim_api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -12,8 +12,9 @@ do
 end
 
 -- languages
-require 'setup.languages.rust'
+require 'setup.languages.golang'
 require 'setup.languages.lua'
--- require 'setup.languages.solidity'
+require 'setup.languages.ocaml'
+require 'setup.languages.rust'
+require 'setup.languages.solidity'
 require 'setup.languages.tex'
-

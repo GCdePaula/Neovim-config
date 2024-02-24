@@ -31,6 +31,8 @@ return require('packer').startup(function(use)
 
   use 'nvim-lualine/lualine.nvim'
 
+  use 'nvim-lua/plenary.nvim'
+  use 'mfussenegger/nvim-dap'
 
   --- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -82,7 +84,7 @@ return require('packer').startup(function(use)
   use 'cespare/vim-toml'
 
   -- Latex
-  use 'lervag/vimtex'
+  -- use 'lervag/vimtex'
 
   -- Cairo
   use { 'starkware-libs/cairo-lang', rtp = 'cairo-lang/src/starkware/cairo/lang/ide/vim/' }

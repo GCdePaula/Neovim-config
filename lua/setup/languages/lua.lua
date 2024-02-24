@@ -1,4 +1,4 @@
-local file = require "utils.file"
+local file = require 'utils.file'
 local lsp = require 'lspconfig'
 local common = require 'setup.languages.common'
 local vim_fn = vim.fn
@@ -9,7 +9,7 @@ local allowed_versions = {
   ["Lua 5.2"] = true,
   ["Lua 5.3"] = true,
   ["Lua 5.4"] = true,
-  ["LuaJIT"]= true,
+  ["LuaJIT"] = true,
 }
 
 local function runtime_and_version(runtime_str)
@@ -90,7 +90,7 @@ local function is_nvim_config(j)
   local vs = j["Lua.diagnostics.globals"] or j["diagnostics.globals"]
   if not vs then return false end
 
-  for _,v in ipairs(vs) do
+  for _, v in ipairs(vs) do
     if v == "vim" then
       return true
     end
@@ -118,7 +118,7 @@ do
   settings = get_settings(version, add_nvim_libs)
 end
 
-lsp.sumneko_lua.setup {
+lsp.lua_ls.setup {
   on_attach = common.on_attach,
   capabilities = common.capabilities,
   settings = settings,

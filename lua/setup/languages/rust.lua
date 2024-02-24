@@ -8,3 +8,5 @@ lsp.rust_analyzer.setup {
   on_attach = common.on_attach,
   capabilities = common.capabilities
 }
+
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
