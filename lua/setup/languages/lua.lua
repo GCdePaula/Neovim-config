@@ -1,8 +1,5 @@
 local file = require 'utils.file'
-local lsp = require 'lspconfig'
 local common = require 'setup.languages.common'
-local vim_fn = vim.fn
-local vim_api = vim.api
 
 local allowed_versions = {
   ["Lua 5.1"] = true,
@@ -36,7 +33,7 @@ local function get_settings(runtime_str, add_nvim_libs)
   end
 
   local function subs_expand(s)
-    return vim_fn.expand(subs(s))
+    return vim.fn.expand(subs(s))
   end
 
   local settings = {
@@ -65,7 +62,7 @@ local function get_settings(runtime_str, add_nvim_libs)
   if add_nvim_libs then
     table.insert(
       settings.workspace.library,
-      vim_api.nvim_get_runtime_file("", true)
+      vim.api.nvim_get_runtime_file("", true)
     )
   end
 
@@ -73,7 +70,7 @@ local function get_settings(runtime_str, add_nvim_libs)
 end
 
 local function parse_luarc()
-  local p = vim_fn.findfile(".luarc.json", ".;")
+  local p = vim.fn.findfile(".luarc.json", ".;")
   if not p then return false end
 
   local s = file.try_read_all(p)
@@ -118,8 +115,8 @@ do
   settings = get_settings(version, add_nvim_libs)
 end
 
-lsp.lua_ls.setup {
-  on_attach = common.on_attach,
+require 'lspconfig'.lua_ls.setup {
+  -- on_attach = common.on_attach,
   capabilities = common.capabilities,
   settings = settings,
 }

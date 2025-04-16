@@ -1,3 +1,6 @@
+-- Plugins settings
+require "setup.plugins"
+
 -- General settings, mostly from vim-sensible
 vim.cmd([[
 source ~/.config/nvim/general.vim
@@ -18,16 +21,14 @@ require "setup.lualine"
 require "setup.tree_sitter"
 
 -- telescope
-require "setup.telescope"
-
--- Plugins settings
-require "setup.plugins"
+-- require "setup.telescope"
 
 -- Autocomplete
 require "setup.autocomplete"
 
 -- Language specific settings.
 require "setup.languages"
+
 
 -- Latex config, stolen from
 -- `https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536`

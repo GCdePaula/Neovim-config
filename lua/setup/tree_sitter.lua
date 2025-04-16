@@ -8,12 +8,20 @@ configs.setup {
     "gomod",
     "gosum",
     "gowork",
+    "html",
+    "javascript",
+    "json",
+    "just",
     "lua",
     "ocaml",
     "ocaml_interface",
     "rust",
-    "solidity_correct",
+    "toml",
+    "typescript",
+    "vim",
   },
+
+  auto_install = true,
 
   highlight = {
     enable = true,

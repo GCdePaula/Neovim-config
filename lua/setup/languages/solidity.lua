@@ -7,10 +7,11 @@ local common = require 'setup.languages.common'
 --   cmd = { "solc-0.8.13", "--include-path", "lib", "--lsp" },
 -- }
 
-lsp.solc.setup {
-  on_attach = common.on_attach,
-  capabilities = common.capabilities,
-}
+-- lsp.solc.setup {
+--   on_attach = common.on_attach,
+--   capabilities = common.capabilities,
+--   root_dir = util.root_pattern('foundry.toml', '.git'),
+-- }
 
 
 vim.cmd([[
@@ -20,14 +21,14 @@ autocmd FileType solidity setlocal commentstring=//\ %s
 --- tree-sitter
 -- local file = require "utils.file"
 -- local queries = require "vim.treesitter.query"
-local parsers = require "nvim-treesitter.parsers"
+-- local parsers = require "nvim-treesitter.parsers"
 -- local api = vim.api
-local fn = vim.fn
+-- local fn = vim.fn
 
-local function get_local_parser_dir(path)
-  local config_path = fn.stdpath "config"
-  return config_path .. "/tree-sitter-parsers/" .. path
-end
+-- local function get_local_parser_dir(path)
+--   local config_path = fn.stdpath "config"
+--   return config_path .. "/tree-sitter-parsers/" .. path
+-- end
 
 -- local function get_local_query_dir(path)
 --   local parser_dir = get_local_parser_dir(path)
@@ -53,16 +54,16 @@ end
 --   end
 -- end
 
-local parser_config = parsers.get_parser_configs()
+-- local parser_config = parsers.get_parser_configs()
 
-parser_config.solidity_correct = {
-  install_info = {
-    url = get_local_parser_dir("tree-sitter-solidity"),
-    files = {"src/parser.c"},
-    branch = "master",
-  },
-  filetype = "solidity",
-}
+-- parser_config.solidity_correct = {
+--   install_info = {
+--     url = get_local_parser_dir("tree-sitter-solidity"),
+--     files = { "src/parser.c" },
+--     branch = "master",
+--   },
+--   filetype = "solidity",
+-- }
 
 -- Set local queries
 -- local local_queries = {

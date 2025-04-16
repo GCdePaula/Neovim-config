@@ -6,22 +6,31 @@ lsp.texlab.setup {
 
       build = {
         onSave = true,
-        executable = "tectonic",
-        args = {
-          "%f",
-          "--synctex",
-          "--keep-logs",
-          "--keep-intermediates",
-          "--outdir",
-          "build",
-        },
+        forwardSearchAfter = true,
+        -- executable = "latexmk",
+        -- args = {
+        --   "-pdf",
+        --   '-pdflatex="pdflatex -interaction=nonstopmode"',
+        --   "%f",
+        -- },
+        -- executable = "tectonic",
+        -- args = {
+        --   "-X",
+        --   "compile",
+        --   "%f",
+        --   "--synctex",
+        --   "--keep-logs",
+        --   "--keep-intermediates",
+        --   "--outdir",
+        --   "build",
+        -- },
       },
 
-      auxDirectory = "build",
+      -- auxDirectory = "build",
 
       forwardSearch = {
         executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
-        args = {"%l", "%p", "%f"},
+        args = { "-r", "-g", "%l", "%p", "%f" },
       },
 
       chktex = {
