@@ -1,5 +1,8 @@
+-- enable 24‑bit RGB in the terminal
+vim.o.termguicolors = true
+
 -- Plugins settings
-require "setup.plugins"
+require "plugins.init"
 
 -- General settings, mostly from vim-sensible
 vim.cmd([[
@@ -7,9 +10,9 @@ source ~/.config/nvim/general.vim
 ]])
 
 -- file explorer mapping, lualine, colorschemes.
-vim.cmd([[
-source ~/.config/nvim/uiconfig.vim
-]])
+-- vim.cmd([[
+-- source ~/.config/nvim/uiconfig.vim
+-- ]])
 
 -- File explorer
 -- require "setup.file_explorer"
@@ -21,7 +24,7 @@ require "setup.lualine"
 -- require "setup.telescope"
 
 -- Autocomplete
-require "setup.autocomplete"
+-- require "setup.autocomplete"
 
 -- Language specific settings.
 require "setup.languages"

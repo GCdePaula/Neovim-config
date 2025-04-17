@@ -21,22 +21,26 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
   spec = {
+    --- General
+    require "plugins.setup.snacks",
+
     --- Colorschemes
-    'ellisonleao/gruvbox.nvim',
+    require "plugins.setup.colors.groovbox",
+    -- 'ellisonleao/gruvbox.nvim',
     -- use 'gruvbox-community/gruvbox'
-    'ayu-theme/ayu-vim',
-    'junegunn/seoul256.vim',
+    -- 'ayu-theme/ayu-vim',
+    -- 'junegunn/seoul256.vim',
 
     -- Tree sitter
     require "setup.tree_sitter",
 
-    -- File explorer
-    require "setup.file_explorer.yazi",
-    require "setup.file_explorer.telescope",
+    -- File navigation
+    require "plugins.setup.file_navigation.yazi",
+    require "plugins.setup.file_navigation.telescope",
 
 
     -- { "nvim-tree/nvim-web-devicons", lazy = true },
-    'nvim-lua/plenary.nvim',
+    -- 'nvim-lua/plenary.nvim',
     -- 'mfussenegger/nvim-dap',
 
     -- {
@@ -71,22 +75,25 @@ require("lazy").setup {
 
 
     --- Autocomplete
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp-signature-help',
-    'hrsh7th/cmp-nvim-lsp-document-symbol',
-    'uga-rosa/cmp-dictionary',
-    -- 'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
+    require "plugins.setup.autocomplete",
+
+
+    -- 'hrsh7th/nvim-cmp',
+    -- 'hrsh7th/cmp-nvim-lsp',
+    -- 'hrsh7th/cmp-buffer',
+    -- 'hrsh7th/cmp-path',
+    -- 'hrsh7th/cmp-cmdline',
+    -- 'hrsh7th/cmp-nvim-lsp-signature-help',
+    -- 'hrsh7th/cmp-nvim-lsp-document-symbol',
+    -- 'uga-rosa/cmp-dictionary',
+    -- -- 'L3MON4D3/LuaSnip',
+    -- 'saadparwaiz1/cmp_luasnip',
 
     --- Language specific plugins
     -- Rust
     {
       'mrcjkb/rustaceanvim',
-      lazy = false, -- This plugin is already lazy
+      lazy = false,     -- This plugin is already lazy
     },
 
     -- just
