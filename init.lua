@@ -12,13 +12,10 @@ source ~/.config/nvim/uiconfig.vim
 ]])
 
 -- File explorer
-require "setup.file_explorer"
+-- require "setup.file_explorer"
 
 -- lualine
 require "setup.lualine"
-
--- tree-sitter
-require "setup.tree_sitter"
 
 -- telescope
 -- require "setup.telescope"

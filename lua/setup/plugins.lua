@@ -23,28 +23,28 @@ require("lazy").setup {
   spec = {
     --- Colorschemes
     'ellisonleao/gruvbox.nvim',
-
     -- use 'gruvbox-community/gruvbox'
     'ayu-theme/ayu-vim',
     'junegunn/seoul256.vim',
 
-    --- UI
-    -- use { 'scrooloose/nerdtree', cmd = 'NERDTreeToggle' }
+    -- Tree sitter
+    require "setup.tree_sitter",
 
-    -- use {
-    --   "luukvbaal/nnn.nvim",
-    --   config = function() require("nnn").setup() end
-    -- }
-    { "nvim-tree/nvim-web-devicons", lazy = true },
+    -- File explorer
+    require "setup.file_explorer.yazi",
+    require "setup.file_explorer.telescope",
+
+
+    -- { "nvim-tree/nvim-web-devicons", lazy = true },
     'nvim-lua/plenary.nvim',
     -- 'mfussenegger/nvim-dap',
 
-    {
-      'nvim-tree/nvim-tree.lua',
-      dependencies = {
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      },
-    },
+    -- {
+    --   'nvim-tree/nvim-tree.lua',
+    --   dependencies = {
+    --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    --   },
+    -- },
 
     'nvim-lualine/lualine.nvim',
 
@@ -55,8 +55,6 @@ require("lazy").setup {
 
 
 
-    --- tree-sitter
-    'nvim-treesitter/nvim-treesitter',
 
 
     --- Comments

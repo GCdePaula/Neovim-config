@@ -1,35 +1,57 @@
--- tree-sitter config
-local configs = require "nvim-treesitter.configs"
+-- lua/plugins/tree_sitter.lua
+return {
+  'nvim-treesitter/nvim-treesitter',
 
-configs.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = {
-    "go",
-    "gomod",
-    "gosum",
-    "gowork",
-    "html",
-    "javascript",
-    "json",
-    "just",
-    "lua",
-    "ocaml",
-    "ocaml_interface",
-    "rust",
-    "toml",
-    "typescript",
-    "vim",
-  },
+  -- on install/update, run the equivalent of :TSUpdate
+  build = function()
+    require('nvim-treesitter.install').update({ with_sync = true })()
+  end,
 
-  auto_install = true,
+  -- lazy‑load when opening a file
+  event = { 'BufReadPost', 'BufNewFile' },
 
-  highlight = {
-    enable = true,
+  config = function()
+    require('nvim-treesitter.configs').setup {
+      ensure_installed = {
+        "bash",
+        "c",
+        "cpp",
+        "lua",
+        "rust",
+        "solidity",
+        "vim",
 
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+        "go",
+        "gomod",
+        "gosum",
+        "gowork",
+
+        "ocaml",
+        "ocaml_interface",
+
+        "javascript",
+        "typescript",
+
+        "dockerfile",
+        "html",
+        "just",
+        "make",
+        "nix",
+        "sql",
+
+        "json",
+        "toml",
+        "yaml",
+      },
+
+      auto_install = true,
+
+      highlight = {
+        enable = true,
+
+        -- only use tree-sitter’s highlighter
+        additional_vim_regex_highlighting = false,
+      },
+    }
+  end,
 }
