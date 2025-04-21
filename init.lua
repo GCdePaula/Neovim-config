@@ -9,6 +9,14 @@ vim.cmd([[
 source ~/.config/nvim/general.vim
 ]])
 
+-- vim.opt.signcolumn = "yes"
+
+-- vim.cmd([[
+-- autocmd FileType latex,tex,md,markdown setlocal spell
+-- ]])
+
+
+
 -- file explorer mapping, lualine, colorschemes.
 -- vim.cmd([[
 -- source ~/.config/nvim/uiconfig.vim
@@ -18,7 +26,7 @@ source ~/.config/nvim/general.vim
 -- require "setup.file_explorer"
 
 -- lualine
-require "setup.lualine"
+-- require "setup.lualine"
 
 -- telescope
 -- require "setup.telescope"
@@ -28,6 +36,16 @@ require "setup.lualine"
 
 -- Language specific settings.
 require "setup.languages"
+
+
+vim.filetype.add {
+  -- Neovim adds start/end anchors to the patterns
+  pattern = {
+    ['[Jj][Uu][Ss][Tt][Ff][Ii][Ll][Ee]'] = 'just',
+    ['.*%.[Jj][Uu][Ss][Tt][Ff][Ii][Ll][Ee]'] = 'just',
+    ['.*%.[Jj][Uu][Ss][Tt]'] = 'just',
+  },
+}
 
 
 -- Latex config, stolen from

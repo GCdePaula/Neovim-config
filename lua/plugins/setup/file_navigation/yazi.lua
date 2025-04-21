@@ -1,11 +1,9 @@
--- lua/plugins/yazi.lua
 return {
   "mikavilpas/yazi.nvim",
 
   event        = "VeryLazy",
 
   dependencies = {
-    "yazi-rs/flavors",
     "folke/snacks.nvim"
   },
 
@@ -14,14 +12,6 @@ return {
     { "<leader>cw", "<cmd>Yazi cwd<cr>",    desc = "Yazi: CWD file manager" },
     { "<leader>-",  "<cmd>Yazi toggle<cr>", desc = "Yazi: Resume last session" },
   },
-
-  build        = function()
-    -- build the gruvbox-dark flavor into your $XDG_CONFIG_HOME/yazi/theme.toml
-    require("yazi.plugin").build_flavor(
-      { name = "yazi-rs/flavors" },
-      { sub_dir = "gruvbox-dark.yazi" }
-    )
-  end,
 
   opts         = {
     open_for_directories = false,
