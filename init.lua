@@ -2,12 +2,42 @@
 vim.o.termguicolors = true
 
 -- Plugins settings
-require "plugins.init"
+require "plugins"
 
 -- General settings, mostly from vim-sensible
-vim.cmd([[
+vim.cmd [[
 source ~/.config/nvim/general.vim
-]])
+]]
+
+-- Utility user functions
+require "funcs"
+
+-- Enable spell check for text‑focused filetypes
+vim.cmd [[
+autocmd FileType latex,tex,md,markdown setlocal spell
+]]
+
+-- Set filetype for just
+vim.filetype.add {
+  -- Neovim adds start/end anchors to the patterns
+  pattern = {
+    ['[Jj][Uu][Ss][Tt][Ff][Ii][Ll][Ee]'] = 'just',
+    ['.*%.[Jj][Uu][Ss][Tt][Ff][Ii][Ll][Ee]'] = 'just',
+    ['.*%.[Jj][Uu][Ss][Tt]'] = 'just',
+  },
+}
+
+--[[
+TODO
+
+* configure snack
+better notification
+dashboard
+figure out all other settings
+
+* AI assistant
+
+]]
 
 -- vim.opt.signcolumn = "yes"
 
@@ -35,33 +65,4 @@ source ~/.config/nvim/general.vim
 -- require "setup.autocomplete"
 
 -- Language specific settings.
-require "setup.languages"
-
-
-vim.filetype.add {
-  -- Neovim adds start/end anchors to the patterns
-  pattern = {
-    ['[Jj][Uu][Ss][Tt][Ff][Ii][Ll][Ee]'] = 'just',
-    ['.*%.[Jj][Uu][Ss][Tt][Ff][Ii][Ll][Ee]'] = 'just',
-    ['.*%.[Jj][Uu][Ss][Tt]'] = 'just',
-  },
-}
-
-
--- Latex config, stolen from
--- `https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536`
--- vim.cmd([[
--- source ~/.config/nvim/latex.vim
--- ]])
-
---[[
-nnn
-autocomplete per language (sources)
-solidity
-lua (version fix)
-js/ts
-telescope and fzf
-lualine
-delete old files
-latex
---]]
+-- require "setup.languages"

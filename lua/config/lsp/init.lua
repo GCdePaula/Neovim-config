@@ -1,4 +1,4 @@
-local on_attach = require "plugins.setup.lsp.on_attach"
+local on_attach = require "config.lsp.on_attach"
 
 return {
   'neovim/nvim-lspconfig',

@@ -18,50 +18,36 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---[[
-TODO
-
-* configure snack
-better notification
-dashboard
-figure out all other settings
-
-* AI assistant
-
-]]
-
 require("lazy").setup {
   spec = {
     --- General
-    require "plugins.setup.snacks",
+    require "config.snacks",
 
     --- Colorschemes
-    -- require "plugins.setup.colors.groovbox",
-    require "plugins.setup.colors.melange",
-    -- require "plugins.setup.colors.rose",
-    -- require "plugins.setup.colors.catppuccin",
-    -- require "plugins.setup.colors.monokai",
+    -- require "config.colors.groovbox",
+    require "config.colors.melange",
+    -- require "config.colors.rose",
+    -- require "config.colors.catppuccin",
+    -- require "config.colors.monokai",
 
     -- Tree sitter
-    require "plugins.setup.tree_sitter",
+    require "config.tree_sitter",
 
     -- File navigation
-    require "plugins.setup.file_navigation.yazi",
-    require "plugins.setup.file_navigation.telescope",
+    require "config.file_navigation.yazi",
+    require "config.file_navigation.telescope",
 
     --- Autocomplete
-    require "plugins.setup.autocomplete",
+    require "config.autocomplete",
 
     --- LSP
-    require "plugins.setup.lsp.init",
-    require "plugins.setup.lsp.rust",
+    require "config.lsp.init",
+    require "config.lsp.rust",
 
     --- Comments
-    require "plugins.setup.comments",
-
+    require "config.comments",
 
     -- statusline
-    require "plugins.setup.lualine",
-    -- 'nvim-lualine/lualine.nvim',
+    require "config.lualine",
   }
 }
