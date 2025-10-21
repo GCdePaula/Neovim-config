@@ -1,4 +1,4 @@
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
   local bufmap = function(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
   end

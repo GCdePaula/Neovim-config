@@ -9,7 +9,9 @@ return {
   -- end,
 
   opts = {
-    -- -- dashboard = { enabled = true },
+    dashboard = {
+      enabled = true,
+    },
 
     bigfile = { enabled = true },
     quickfile = { enabled = true },
@@ -18,15 +20,6 @@ return {
     statuscolumn = { enabled = true },
     indent = { enabled = true, animate = { enabled = false } },
 
-
-    -- words = { enabled = true },
-
-    -- -- input = { enabled = true },
-    -- -- explorer = { enabled = true },
-    -- -- picker = { enabled = true },
-    -- -- scope = { enabled = true },
-    -- -- scroll = { enabled = true },
-
-
+    words = { enabled = true },
   },
 }

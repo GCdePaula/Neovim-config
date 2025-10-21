@@ -13,20 +13,21 @@ lsp.texlab.setup {
         --   '-pdflatex="pdflatex -interaction=nonstopmode"',
         --   "%f",
         -- },
-        -- executable = "tectonic",
-        -- args = {
-        --   "-X",
-        --   "compile",
-        --   "%f",
-        --   "--synctex",
-        --   "--keep-logs",
-        --   "--keep-intermediates",
-        --   "--outdir",
-        --   "build",
-        -- },
+
+        executable = "tectonic",
+        args = {
+          "-X",
+          "compile",
+          "%f",
+          "--synctex",
+          "--keep-logs",
+          "--keep-intermediates",
+          "--outdir",
+          "build",
+        },
       },
 
-      -- auxDirectory = "build",
+      auxDirectory = "build",
 
       forwardSearch = {
         executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
