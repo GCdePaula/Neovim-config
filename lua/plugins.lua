@@ -49,5 +49,8 @@ require("lazy").setup {
 
     -- statusline
     require "config.lualine",
+
+    -- ai
+    -- require "config.ai",
   }
 }

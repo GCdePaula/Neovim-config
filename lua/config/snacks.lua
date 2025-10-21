@@ -15,7 +15,7 @@ return {
 
     bigfile = { enabled = true },
     quickfile = { enabled = true },
-    notifier = { enabled = true },
+    -- notifier = { enabled = true },
 
     statuscolumn = { enabled = true },
     indent = { enabled = true, animate = { enabled = false } },
