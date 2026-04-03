@@ -1,4 +1,3 @@
--- lua/plugins/tree_sitter.lua
 return {
   'nvim-treesitter/nvim-treesitter',
 

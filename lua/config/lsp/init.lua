@@ -7,7 +7,6 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
-    'mrcjkb/rustaceanvim',
     { 'folke/lazydev.nvim', ft = 'lua' },
   },
 
@@ -16,9 +15,6 @@ return {
 
   config = function()
     local lspconfig = require('lspconfig')
-
-    -- Diagnostics display
-    vim.diagnostic.config { virtual_text = true, signs = true, underline = true }
 
     local capabilities = require('cmp_nvim_lsp')
         .default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -69,9 +65,6 @@ return {
             capabilities = capabilities,
             settings     = {
               Lua = {
-                runtime = {
-                  version = '5.4',
-                },
                 diagnostics = { globals = { 'vim' } },
                 telemetry   = { enable = false },
               },

@@ -47,10 +47,11 @@ require("lazy").setup {
     --- Comments
     require "config.comments",
 
+    -- git
+    require "config.gitsigns",
+
     -- statusline
     require "config.lualine",
 
-    -- ai
-    require "config.ai",
   }
 }

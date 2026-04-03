@@ -13,14 +13,11 @@ return {
   config = function()
     local cmp = require('cmp')
 
-    -- Use a better completion menu
-    vim.opt.completeopt = 'menu,menuone,noselect'
-
     -- Basic mappings
     cmp.setup {
       mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>']      = cmp.mapping.confirm { select = true },
+        ['<CR>']      = cmp.mapping.confirm { select = false },
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },

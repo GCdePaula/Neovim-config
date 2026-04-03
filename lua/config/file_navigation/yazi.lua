@@ -14,7 +14,7 @@ return {
   },
 
   opts         = {
-    open_for_directories = false,
+    open_for_directories = true,
     keymaps = {
       open_file_in_tab = "<leader>t",
       show_help = "<F1>"
