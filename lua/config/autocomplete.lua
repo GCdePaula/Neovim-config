@@ -30,7 +30,7 @@ return {
     }
 
     -- Prose: enable dictionary and buffer word completions
-    cmp.setup.filetype({ 'markdown', 'text', 'tex' }, {
+    cmp.setup.filetype({ 'markdown', 'text', 'tex', 'typ' }, {
       sources = cmp.config.sources({
         { name = 'dictionary' },
         { name = 'buffer' },

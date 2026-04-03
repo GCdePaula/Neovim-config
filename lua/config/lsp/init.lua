@@ -28,7 +28,7 @@ return {
     require('mason-lspconfig').setup {
       ensure_installed = {
         'bashls', 'dockerls', 'superhtml', 'taplo', 'texlab',
-        'clangd', 'lua_ls', 'rust_analyzer', 'solidity_ls',
+        'clangd', 'lua_ls', 'solidity_ls',
       },
       automatic_installation = true,
 
@@ -69,6 +69,9 @@ return {
             capabilities = capabilities,
             settings     = {
               Lua = {
+                runtime = {
+                  version = '5.4',
+                },
                 diagnostics = { globals = { 'vim' } },
                 telemetry   = { enable = false },
               },

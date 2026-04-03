@@ -14,7 +14,7 @@ require "funcs"
 
 -- Enable spell check for text‑focused filetypes
 vim.cmd [[
-autocmd FileType latex,tex,md,markdown setlocal spell
+autocmd FileType latex,tex,md,markdown,typst setlocal spell
 ]]
 
 -- Set filetype for just

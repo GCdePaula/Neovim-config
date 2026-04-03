@@ -51,6 +51,6 @@ require("lazy").setup {
     require "config.lualine",
 
     -- ai
-    -- require "config.ai",
+    require "config.ai",
   }
 }
