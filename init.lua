@@ -90,6 +90,11 @@ vim.keymap.set('n', '<C-L>', '<C-W><C-L>')
 vim.keymap.set('n', '<C-H>', '<C-W><C-H>')
 
 --------------------
+-- LSP keybindings (LspAttach autocmd)
+--------------------
+require 'config.lsp.on_attach'
+
+--------------------
 -- Plugins
 --------------------
 require 'plugins'

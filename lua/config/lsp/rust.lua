@@ -1,33 +1,31 @@
-local on_attach_ = require "config.lsp.on_attach"
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client or client.name ~= 'rust-analyzer' then return end
 
-local function on_attach(client, bufnr)
-  on_attach_(client, bufnr)
+    local bufnr = args.buf
+    local group = vim.api.nvim_create_augroup("LspRustFmt", { clear = false })
+    vim.api.nvim_clear_autocmds { buffer = bufnr, group = group }
 
-  local group = vim.api.nvim_create_augroup("LspRustFmt", { clear = false })
-  vim.api.nvim_clear_autocmds { buffer = bufnr, group = group }
-
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group    = group,
-    buffer   = bufnr,
-    callback = function()
-      vim.lsp.buf.format { bufnr = bufnr }
-    end,
-  })
-end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group    = group,
+      buffer   = bufnr,
+      callback = function()
+        vim.lsp.buf.format { bufnr = bufnr }
+      end,
+    })
+  end,
+})
 
 return {
   'mrcjkb/rustaceanvim',
 
   lazy = false,
   init = function()
-    local capabilities = require('cmp_nvim_lsp')
-        .default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-    -- configure rustaceanvim via globals
     vim.g.rustaceanvim = {
       server = {
-        on_attach    = on_attach,
-        capabilities = capabilities,
+        capabilities = require('cmp_nvim_lsp')
+            .default_capabilities(vim.lsp.protocol.make_client_capabilities()),
       },
     }
   end,

@@ -1,78 +1,31 @@
-local on_attach = require "config.lsp.on_attach"
-
 return {
   'neovim/nvim-lspconfig',
 
   dependencies = {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
     { 'folke/lazydev.nvim', ft = 'lua' },
   },
 
-  event = { 'BufReadPre', 'BufNewFile' },
-
-
   config = function()
-    local lspconfig = require('lspconfig')
+    require('lazydev').setup()
 
-    local capabilities = require('cmp_nvim_lsp')
-        .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    -- Global config: capabilities for all servers
+    vim.lsp.config('*', {
+      capabilities = require('cmp_nvim_lsp')
+          .default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    })
 
-    -- Mason & LSP installations
-    require('mason').setup()
-    require('mason-lspconfig').setup {
-      ensure_installed = {
-        'bashls', 'dockerls', 'superhtml', 'taplo', 'texlab',
-        'clangd', 'lua_ls', 'solidity_ls',
-      },
-      automatic_installation = true,
-
-      -- LSP server handlers
-      handlers = {
-        -- Default handler (all servers except Rust & Lua)
-        function(server)
-          if server == 'rust_analyzer' or server == 'lua_ls' then return end
-          local opts = { on_attach = on_attach, capabilities = capabilities }
-
-          if server == 'texlab' then
-            opts.settings = {
-              texlab = {
-                build = {
-                  executable = 'latexmk',
-                  args       = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
-                  onSave     = true,
-                },
-                forwardSearch = {
-                  executable = '/Applications/Skim.app/Contents/SharedSupport/displayline',
-                  args       = { '-r', '%l', '%p', '%f' },
-                },
-                chktex = { onOpenAndSave = true },
-              },
-            }
-          elseif server == 'clangd' then
-            opts.capabilities.offsetEncoding = { 'utf-16' }
-          end
-
-          lspconfig[server].setup(opts)
-        end,
-
-        -- Lua handled by lazydev.nvim
-        ['lua_ls'] = function()
-          require('lazydev').setup()
-          local opts = {
-            on_attach    = on_attach,
-            capabilities = capabilities,
-            settings     = {
-              Lua = {
-                diagnostics = { globals = { 'vim' } },
-                telemetry   = { enable = false },
-              },
-            },
-          }
-          lspconfig.lua_ls.setup(opts)
-        end,
-      }
-    }
+    -- Enable all servers (custom settings live in lsp/*.lua files)
+    vim.lsp.enable({
+      'bashls',
+      'clangd',
+      'dockerls',
+      'lua_ls',
+      'nil_ls',
+      'solidity_ls',
+      'superhtml',
+      'taplo',
+      'texlab',
+    })
   end,
 }

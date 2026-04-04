@@ -3,9 +3,7 @@ return {
 
   dependencies = {
     'nvim-lua/plenary.nvim',
-
-    -- FZF sorter for lightning‑fast fuzzy‑search
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    'nvim-telescope/telescope-fzf-native.nvim',
   },
 
   config = function()
