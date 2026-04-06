@@ -6,16 +6,15 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
 
   config = function()
-    require('nvim-treesitter.configs').setup {
-      -- Parsers are provided by nix (home/neovim.nix), not installed by treesitter
-      auto_install = false,
-
-      highlight = {
-        enable = true,
-
-        -- only use tree-sitter's highlighter
-        additional_vim_regex_highlighting = false,
-      },
-    }
+    -- Parsers are provided by nix (home/neovim.nix), not installed by treesitter
+    -- Modern nvim-treesitter no longer has the configs module;
+    -- highlighting is enabled by default when parsers are available.
+    -- Ensure highlight is on and regex highlighting is off:
+    vim.treesitter.start = vim.treesitter.start -- ensure autostart
+    vim.api.nvim_create_autocmd('FileType', {
+      callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+      end,
+    })
   end,
 }
