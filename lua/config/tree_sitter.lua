@@ -1,5 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  dir = vim.fn.stdpath('data') .. '/site/pack/hm/start/nvim-treesitter',
 
   -- lazy-load when opening a file
   event = { 'BufReadPost', 'BufNewFile' },
