@@ -3,7 +3,10 @@ return {
 
   dependencies = {
     'nvim-lua/plenary.nvim',
-    -- telescope-fzf-native is provided by nix (home/neovim.nix), not Lazy
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      dir = vim.fn.stdpath('data') .. '/site/pack/hm/start/telescope-fzf-native.nvim',
+    },
   },
 
   config = function()
